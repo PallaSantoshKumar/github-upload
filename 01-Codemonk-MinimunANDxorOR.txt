@@ -1,0 +1,44 @@
+/*
+// Sample code to perform I/O:
+
+name = Console.ReadLine();                  // Reading input from STDIN
+Console.WriteLine("Hi, {0}.", name);        // Writing output to STDOUT
+
+// Warning: Printing unwanted or ill-formatted data to output will cause the test cases to fail
+*/
+
+// Write your code here
+// Write your code here
+using System;
+using System.Collections.Generic;
+public class MinimunANDxorOR {
+    public static void Main(String[] args) {
+    
+    //Number of Test Cases
+    int numberOfTestCases = Convert.ToInt32(Console.ReadLine());
+    while(numberOfTestCases > 0) {
+        long finalvalue = iterateNumberOfTestCases();
+        Console.WriteLine(finalvalue);
+        numberOfTestCases = numberOfTestCases - 1;
+    }       
+  } 
+public static long iterateNumberOfTestCases() {
+        List<long> elems = new List<long>();
+        //Reading Inputs Number of elements and number of steps of rotations.
+        long sizeofAnArray = Convert.ToInt64(Console.ReadLine());
+        string readInputs = Console.ReadLine(); //Tst
+        string[] inputs = readInputs.Split(' ');
+        for(int i = 0; i<inputs.Length;i++) {
+            elems.Add(Convert.ToInt64(inputs[i]));
+        }
+        elems.Sort((a, b) => b.CompareTo(a));
+        long minimumValue = elems[0] ^ elems[1];
+        for(int i=0;i<elems.Count-1;i++) {
+            long tempValue = elems[i] ^ elems[i+1];
+                if(tempValue!= null && tempValue < minimumValue) {
+                    minimumValue = tempValue;
+                }
+        }
+        return minimumValue;
+}
+}

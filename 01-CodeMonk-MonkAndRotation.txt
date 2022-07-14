@@ -1,0 +1,59 @@
+/*
+// Sample code to perform I/O:
+
+name = Console.ReadLine();                  // Reading input from STDIN
+Console.WriteLine("Hi, {0}.", name);        // Writing output to STDOUT
+
+// Warning: Printing unwanted or ill-formatted data to output will cause the test cases to fail
+*/
+
+// Write your code here
+using System;
+using System.Collections.Generic;
+public class MonkAndRotation {
+    public static void Main(String[] args) {
+    
+    //Number of Test Cases
+    int numberOfTestCases = Convert.ToInt32(Console.ReadLine());
+
+    for(int i = 0; i<numberOfTestCases; i++) {
+        iterateNumberOfTestCases();
+        Console.WriteLine();
+    }
+        
+    }
+
+    public static void iterateNumberOfTestCases() {
+        List<int> arrayOfElemets = new List<int>();
+        //Reading Inputs Number of elements and number of steps of rotations.
+        string readInputs = Console.ReadLine();
+        string[] inputs = readInputs.Split(' ');
+        int numberOfElements = Convert.ToInt32(inputs[0]);
+        int numberOfStepsRotaions = Convert.ToInt32(inputs[1]);
+
+        //Reading Inputs elements based on number of elements 
+        string readElements = Console.ReadLine();
+        string[] elements = readElements.Split(' ');
+
+        for(int i = 0; i<numberOfElements; i++) {
+            arrayOfElemets.Add(Convert.ToInt32(elements[i]));
+        }
+
+        for(int i = 0; i<numberOfStepsRotaions; i++) {
+            RotateRight(arrayOfElemets);
+        }
+    
+        for(int i = 0; i<numberOfElements; i++) {
+            Console.Write(arrayOfElemets[i] + " ");
+        }
+    }
+
+    //Rotating elemets to right on each iteration.
+    public static void RotateRight(List<int> arrayOfElemets) {
+        int tempVal = arrayOfElemets[arrayOfElemets.Count - 1];
+        for(int i = arrayOfElemets.Count - 1; i>0; i--) {
+            arrayOfElemets[i] = arrayOfElemets[i-1];
+        }
+        arrayOfElemets[0] = tempVal;
+    }
+}
